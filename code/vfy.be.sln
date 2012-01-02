@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vfy.be", "vfy.be\vfy.be.csproj", "{308D8A13-ED49-486E-B157-D21D208279F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vfy.be.tests", "vfy.be.tests\vfy.be.tests.csproj", "{13C62142-5FD7-4C4A-A9CF-CE10BA3A561A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13C62142-5FD7-4C4A-A9CF-CE10BA3A561A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{13C62142-5FD7-4C4A-A9CF-CE10BA3A561A}.Debug|x86.Build.0 = Debug|Any CPU
+		{13C62142-5FD7-4C4A-A9CF-CE10BA3A561A}.Release|x86.ActiveCfg = Release|Any CPU
+		{13C62142-5FD7-4C4A-A9CF-CE10BA3A561A}.Release|x86.Build.0 = Release|Any CPU
+		{308D8A13-ED49-486E-B157-D21D208279F6}.Debug|x86.ActiveCfg = Debug|x86
+		{308D8A13-ED49-486E-B157-D21D208279F6}.Debug|x86.Build.0 = Debug|x86
+		{308D8A13-ED49-486E-B157-D21D208279F6}.Release|x86.ActiveCfg = Release|x86
+		{308D8A13-ED49-486E-B157-D21D208279F6}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = vfy.be\vfy.be.csproj
+	EndGlobalSection
+EndGlobal
