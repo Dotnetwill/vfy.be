@@ -1,4 +1,5 @@
 using System;
+using System.Dynamic;
 using vfy.be.Interfaces;
 
 namespace vfy.be.tests
@@ -30,6 +31,15 @@ namespace vfy.be.tests
 		{
 			IncrementClickCountByIdCalled = true;
 		}
+
+		public dynamic GetDetailsFromId (int id)
+		{
+			dynamic result =  new ExpandoObject();
+			result.Url = GetUrlForIdReturns;
+			result.Clicks = 0;
+			return result;
+		}
+		
 	}
 }
 

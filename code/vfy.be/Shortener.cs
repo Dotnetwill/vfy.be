@@ -34,17 +34,18 @@ namespace vfy.be
 			return ShortenerMathBits.Encode(id);
 		}
 		
-		public String Expand(String hash)
+		public Tuple<String, Int32> Expand(String hash)
 		{
 			var id = ShortenerMathBits.Decode(hash);
 			
-			var url = _db.GetUrlForId(id);
-			if(!String.IsNullOrEmpty(url))
+			var info = _db.GetDetailsFromId(id);
+
+			if(!String.IsNullOrEmpty(info.Url))
 			{
 				_db.IncrementClickCountById(id);
 			}
 			
-			return url;
+			return new Tuple<String, Int32>(info.Url, (info.Clicks++));
 		}
 	}
 }

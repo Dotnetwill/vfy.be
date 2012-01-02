@@ -33,12 +33,20 @@
     <Reference Include="nunit.core, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
     <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Nancy.Testing">
+      <HintPath>..\libs\Nancy.Testing.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy">
+      <HintPath>..\libs\Nancy.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbIntegrationTests.cs" />
     <Compile Include="ShortenerMathBitsTests.cs" />
     <Compile Include="ShortenerTests.cs" />
     <Compile Include="Fakes\FakeDb.cs" />
+    <Compile Include="SiteTests.cs" />
+    <Compile Include="Fakes\FakeShortener.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

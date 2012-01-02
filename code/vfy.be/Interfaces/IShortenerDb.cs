@@ -6,7 +6,7 @@ namespace vfy.be.Interfaces
 	{
 		Int32 InsertUrl(String url);
 		Int32? GetIdForUrl(String url);
-		String GetUrlForId(Int32 id);
+		dynamic GetDetailsFromId(int id);
 		void IncrementClickCountById(Int32 id);
 	}
 }

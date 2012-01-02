@@ -85,7 +85,7 @@ namespace vfy.be.tests
 			var returnedUrl = _shortener.Expand(hash);
 			
 			//Assert
-			Assert.IsNull(returnedUrl);
+			Assert.IsNull(returnedUrl.Item1);
 		}
 		
 		[Test]
@@ -100,7 +100,7 @@ namespace vfy.be.tests
 			var returnedUrl = _shortener.Expand(hash);
 			
 			//Assert
-			Assert.AreEqual(expectedUrl, returnedUrl);			
+			Assert.AreEqual(expectedUrl, returnedUrl.Item1);			
 		}
 		
 		[Test]

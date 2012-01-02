@@ -40,7 +40,7 @@ namespace vfy.be
 				var param = new SqliteParameter("@Url", url);
 				
 				var id = RunQueryAndReturnScalarValue<long>(SQL.SelectIdByUrl, db, new[] { param });
-				return id == 0 ? null : new Nullable<Int32>((Int32)id);
+				return id == 0 ? null : new Nullable<Int32>((Int32)id);  //yes, yes, yes integer overflow boohoo
 			}	
 		}
 
@@ -76,7 +76,7 @@ namespace vfy.be
 			using(var db = OpenOrCreateDatabase())
 			{
 				var param = new SqliteParameter("@Id", id);
-				clicks = (int)RunQueryAndReturnScalarValue<long>(SQL.SelectClickCountById, db, new[] { param });
+				clicks = (int)RunQueryAndReturnScalarValue<long>(SQL.SelectClickCountById, db, new[] { param }); 
 			}
 			
 			dynamic result =  new ExpandoObject();
