@@ -101,7 +101,7 @@ namespace vfy.be.tests
 			const Int32 start = 0;
 			const Int32 end = 1000000;
 			
-			for(int i = 0; i <= end; i++)
+			for(int i = start; i <= end; i++)
 			{
 				var enc = ShortenerMathBits.Encode(i);
 				var dec = ShortenerMathBits.Decode(enc);
