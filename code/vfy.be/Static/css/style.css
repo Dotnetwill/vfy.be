@@ -7,8 +7,8 @@ audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 
-html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-body { margin: 0; font-size: 13px; line-height: 1.231; }
+html { background-repeat: repeat; font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body { background-image: url(../thin-bg.png); background-repeat: repeat; margin: 0; font-size: 13px; line-height: 1.231; }
 body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
@@ -151,12 +151,14 @@ article.actionbox
 
 article input[type='text']
 {
+	padding: 0.3em;
 	width: 85%;
+	opacity: 1.0;
 }
 
 article button
 {
-	width: 4em;
+	width: 5em;
 	padding: 0.4em;
 }
 
