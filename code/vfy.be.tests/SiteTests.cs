@@ -121,7 +121,7 @@ namespace vfy.be.tests
 			var response = _browser.Get("/api/expand-url", with => 
 			{
 				with.HttpRequest();
-				with.FormValue("Code", "a");
+				with.Query("Code", "a");
 			});
 			
 			//Assert
@@ -143,7 +143,7 @@ namespace vfy.be.tests
 			_browser.Get("/api/expand-url", with => 
 			{
 				with.HttpRequest();
-				with.FormValue("Code", "vfy.be/a");
+				with.Query("Code", "vfy.be/a");
 			});
 			
 			//Assert
@@ -163,7 +163,7 @@ namespace vfy.be.tests
 			_browser.Get("/api/expand-url", with => 
 			{
 				with.HttpRequest();
-				with.FormValue("Code", "http://vfy.be/a");
+				with.Query("Code", "http://vfy.be/a");
 			});
 			
 			//Assert
@@ -178,7 +178,7 @@ namespace vfy.be.tests
 			var response = _browser.Get("/api/expand-url", with => 
 			{
 				with.HttpRequest();
-				with.FormValue("Code", "a");
+				with.Query("Code", "a");
 			});
 			
 			//Assert

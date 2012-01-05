@@ -10,29 +10,27 @@ namespace vfy.be
 	public class Site : NancyModule
 	{
 		private const String SiteUrl = "http://vfy.be/";
-		private readonly IShortener _shortener;
 		
 		public Site (IShortener shortener)
 		{
-			_shortener = shortener;
 			StaticConfiguration.DisableCaches = true;
 			StaticConfiguration.DisableErrorTraces = false;
 			
-			Get["/"] = _ =>  View["index.html"];
+			Get["/"] = _ =>  View["index"];
 			
 			Get["/api/expand-url"] = _ => 
 			{
-				if(!Request.Form.Code.HasValue || String.IsNullOrEmpty(Request.Form.Code))
+				if(!Request.Query.Code.HasValue || String.IsNullOrEmpty(Request.Query.Code))
 					return HttpStatusCode.BadRequest;
 				
-				String code = Request.Form.Code;
+				String code = Request.Query.Code;
 				
 				if(code.Contains("/"))
 				{
 					code = code.Split('/').Last();
 				}
-				
-				var info = _shortener.Expand(code);
+				Console.WriteLine(code);
+				var info = shortener.Expand(code);
 				var res = new DetailsResponse();
 				if(String.IsNullOrEmpty(info.Item1))
 				{
@@ -49,7 +47,7 @@ namespace vfy.be
 			
 			Get["/{shortCode}"] = (arg) =>  
 			{
-				String realUrl = _shortener.Expand(arg.shortCode).Item1;
+				String realUrl = shortener.Expand(arg.shortCode).Item1;
 				if(String.IsNullOrEmpty(realUrl))
 					return HttpStatusCode.NotFound;
 				
@@ -62,7 +60,7 @@ namespace vfy.be
 					return HttpStatusCode.BadRequest;
 				
 				var url = HttpUtility.UrlEncodeUnicode(Request.Form.Url);
-				return String.Concat(SiteUrl, _shortener.Shorten(url));
+				return String.Concat(SiteUrl, shortener.Shorten(url));
 			};
 			
 		}
