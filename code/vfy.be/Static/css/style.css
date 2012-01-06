@@ -134,13 +134,18 @@ body
 
 header 
 {
+    min-width: 800px;
     text-align: center;
     padding-top: 0.5em;
 }
 
 article.actionbox
 {
-    margin: 1em;
+    margin-left: auto;
+    margin-bottom: 1em;
+    margin-right: auto;
+    margin-top: 1em;
+    width: 70%;
     background-color: #fff;
     border-radius: 7px; 
     -moz-border-radius: 7px; 
@@ -160,5 +165,31 @@ article button
 {
 	width: 5em;
 	padding: 0.4em;
+}
+
+ul li
+{
+	border-style: inset;
+	border-width: 0.3em;
+	list-style-type: none;
+	border: 1px solid #696;
+    padding: 60px 0;
+    text-align: center; 
+    width: 50%;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -webkit-box-shadow: #666 0px 2px 5px;
+    -moz-box-shadow: #666 0px 2px 5px;
+    box-shadow: #666 0px 2px 5px;
+    background: #FFFFFF;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#FFFFFF), to(#DAE6D6));
+    background: -webkit-linear-gradient(#FFFFFF, #DAE6D6);
+    background: -moz-linear-gradient(#FFFFFF, #DAE6D6);
+    background: -ms-linear-gradient(#FFFFFF, #DAE6D6);
+    background: -o-linear-gradient(#FFFFFF, #DAE6D6);
+    background: linear-gradient(#FFFFFF, #DAE6D6);
+    -pie-background: linear-gradient(#FFFFFF, #DAE6D6);
+    behavior: url(/PIE.htc);
 }
 

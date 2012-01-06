@@ -31,14 +31,22 @@
         <article class="actionbox">
             <h3>Shorten</h3>
             <label>Url <input type="text" name="url" id="url" /> </label><button id="shorten">Chop</button>
+            <ul id="shortened-links">
+                <li style="display:none;" id="tmpl"> 
+                    <h4 id="old-url"></h4>
+                    <p><input type="text" name="short-url" id="short-url" readonly="true" /></p>
+                </li>
+            </ul>
             <div id="shortened-link"></div>
         </article>
         
          <article class="actionbox">
             <h3>Expand</h3>
-            <label>Url <input type=text name="url" /> </label><button id="expand">Expando</button>
-            <p>Real url <div id="real-url"></div></p>
-            <p>Click count <div id="click-count"></div></p>
+            <label>Url <input type=text name="url" id="expand-url" /> </label><button id="expand">Expando</button>
+            <div id="look-result" style="display:none;">
+                <p>Real url <div id="real-url"></div></p>
+                <p>Click count <div id="click-count"></div></p>
+            </div>
         </article>
 
     </div>
@@ -51,13 +59,6 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
-
-  <!-- scripts concatenated and minified via ant build script-->
-  <script defer src="js/plugins.js"></script>
-  <script defer src="js/script.js"></script>
-  <!-- end scripts-->
-
-
   <script> // Change UA-XXXXX-X to be your site's ID
     window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
     Modernizr.load({
@@ -68,19 +69,28 @@
   $(function() {
      
     $('#shorten').click(function() {
-            /*$.ajax({type: "POST",
-                    contentType: "application/json",
-                    url: "api/shorten-url",
-                    data: { "Url" : $('#url').val()}
-                    })
-             .success(function(data) {
-                    $('#shortened-link').text(data);
-                });*/
+            var newItem = $("#tmpl").clone();
+            newItem.prependTo("#shortened-links").slideDown("slow");
+            
+            newItem.find('#short-url').val('Loading…');
+            newItem.find('#old-url').text($('#url').val());
+            
             $.post("api/shorten-url", { Url : $('#url').val()}, function(data) {
-                    $('#shortened-link').text(data);
+                    newItem.find('#short-url').val(data);
                 });
               
             });
+    });
+    
+    $("#expand").click(function() {
+        $("#click-count").html("<em>loading…</em>");
+        $("#real-url").html("<em>loading…</em>");
+        $("#look-result").fadeIn('slow');
+        
+        $.getJSON("api/expand-url", { Code: $("#expand-url").val() }, function(data) {
+            $("#click-count").html("<em>" + data.Clicks + "</em>");
+            $("#real-url").html("<em>" + data.Url + "</em>");
+        });
     });
     </script>
   <!--[if lt IE 7 ]>
