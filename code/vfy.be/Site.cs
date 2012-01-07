@@ -59,7 +59,7 @@ namespace vfy.be
 				if(!Request.Form.Url.HasValue || String.IsNullOrEmpty(Request.Form.Url))
 					return HttpStatusCode.BadRequest;
 				
-				var url = HttpUtility.UrlEncodeUnicode(Request.Form.Url);
+				var url = HttpUtility.HtmlEncode(Request.Form.Url);
 				return String.Concat(SiteUrl, shortener.Shorten(url));
 			};
 			

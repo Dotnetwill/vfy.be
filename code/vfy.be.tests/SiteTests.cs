@@ -2,6 +2,7 @@ using System;
 using NUnit.Framework;
 using Nancy.Testing;
 using Nancy;
+using Nancy.Helpers;
 
 namespace vfy.be.tests
 {
@@ -69,7 +70,7 @@ namespace vfy.be.tests
 		}
 		
 		[Test]
-		public void ApiShortenUrl_ValidRequestUrlHasScriptTags_UrlIsUrlEncodedBeforeSendingToShortener()
+		public void ApiShortenUrl_ValidRequestUrlHasScriptTags_ValueIsHtmlEncodedBeforeSendingToShortener()
 		{
 			//Arrange
 		    //Act
@@ -79,8 +80,23 @@ namespace vfy.be.tests
 		    });
 		
 		    //Assert
-			const String expectedValue = "%3cscript%3eYou're+a+wizard+Harry%3c%2fscript%3e";
+			const String expectedValue = "&lt;script&gt;You're a wizard Harry&lt;/script&gt;";
 		    StringAssert.AreEqualIgnoringCase(expectedValue, _fakeShortener.ShortenCalledWith);
+		}
+		
+		[Test]
+		public void ApiShortenUrl_ValidRequestUrl_UrlIsStoredCorrectly()
+		{
+			//Arrange
+			const String expectedUrl = "http://google.com";
+		    //Act
+		    _browser.Post("/api/shorten-url", (with) => {
+		        with.HttpRequest();
+		        with.FormValue("Url",expectedUrl);
+		    });
+		
+		    //Assert
+		    StringAssert.AreEqualIgnoringCase(expectedUrl, _fakeShortener.ShortenCalledWith);
 		}
 		
 		[Test]
@@ -96,6 +112,7 @@ namespace vfy.be.tests
 			//Assert
 			response.ShouldHaveRedirectedTo(fullLink);
 		}
+		
 		
 		[Test]
 		public void ShortCodeLink_InvalidShortcode_UserIsRedirected()
